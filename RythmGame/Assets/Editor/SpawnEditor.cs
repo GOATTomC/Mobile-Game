@@ -16,6 +16,8 @@ public class SpawnEditor : EditorWindow {
 
     private List<double> m_SliceTimes = new List<double>();
 
+    private DataFileWriter m_FileWriter;
+
 
     //Open and Focus on the editor window
     [MenuItem("Window/Object Spawn Editor")]
@@ -24,6 +26,7 @@ public class SpawnEditor : EditorWindow {
         SpawnEditor editorWindow = (SpawnEditor)EditorWindow.GetWindow((typeof(SpawnEditor)));
         editorWindow.Show();
         editorWindow.Focus();
+
     }
 
     //Draws the window contents
@@ -130,6 +133,11 @@ public class SpawnEditor : EditorWindow {
                 //Reset the item values if the user does not want to keep them
                 ResetValues();
             }
+
+            //Create and call object that handles the writing
+            DataFileWriter writer = new DataFileWriter();
+            writer.WriteToFile(m_FileName, m_ItemID, m_SpawnSecond, m_SliceTimes);
+
         }
     }
 
