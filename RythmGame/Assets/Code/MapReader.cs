@@ -7,22 +7,24 @@ public class MapReader : MonoBehaviour
 {
     [SerializeField] private PlayerInput input;
     [SerializeField] private GameObject sliceObj;
+
     [SerializeField] private GameObject fish;
+    [SerializeField] private GameObject deeg;
+    [SerializeField] private GameObject komkomer;
 
     Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
 
     [SerializeField] private LevelData mapdata;
-    [SerializeField] private float beatSpeed;
-    public float BeatSpeed { get { return beatSpeed; } }
+    public float mapSpeed;
 
-    public bool hard;
     public Text text;
+    public Text scoreText;
 
     private void Awake()
     {
         objects.Add("Fish", fish);
-        if(hard)
-            Time.timeScale = 0.1f;
+        objects.Add("Deeg", deeg);
+        objects.Add("Komkomer", komkomer);
     }
 
     private void Start()
@@ -30,9 +32,7 @@ public class MapReader : MonoBehaviour
         for (int i = 0; i < mapdata.LevelItems.Count; i++)
         {
 
-            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID],
-                                       Spawn(mapdata.LevelItems[i].SpawnSecondinGame),
-                                       transform.rotation);
+            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame), Quaternion.identity);
             g.transform.SetParent(this.transform);
 
             for (int j = 0; j < mapdata.LevelItems[i].SliceSecondsInGame.Count; j++)
@@ -47,15 +47,22 @@ public class MapReader : MonoBehaviour
     private void Update()
     {
         float x = transform.position.x;
-        x += Time.deltaTime * beatSpeed;
+        x += Time.deltaTime * mapSpeed;
         transform.position = new Vector3(x, 0, 0);
-        text.text = (Time.timeSinceLevelLoad / Time.timeScale).ToString();
+        text.text = Time.timeSinceLevelLoad.ToString();
     }
 
     public Vector3 Spawn(double spawnTime)
     {
         Vector3 returnVec = Vector3.zero;
-        returnVec.x = (float)spawnTime * -beatSpeed;
+        returnVec.x = -(float)(spawnTime);
+        return returnVec;
+    }
+
+    public Vector3 Spawn(double spawnTime, float multiplier)
+    {
+        Vector3 returnVec = Vector3.zero;
+        returnVec.x = -(float)(spawnTime / multiplier);
         return returnVec;
     }
 }

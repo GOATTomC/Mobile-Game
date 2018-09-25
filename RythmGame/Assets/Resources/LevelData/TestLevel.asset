@@ -13,20 +13,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelItems:
   - ItemID: Fish
-    SpawnSecondinGame: 1
+    SpawnSecondinGame: 3
     SliceSecondsInGame:
-    - 1.1
-    - 1.3
-    - 1.6
-  - ItemID: Fish
-    SpawnSecondinGame: 2.5
-    SliceSecondsInGame:
-    - 2.6
-    - 2.95
-    - 3.1
-  - ItemID: Fish
-    SpawnSecondinGame: 3.6
-    SliceSecondsInGame:
-    - 3.65
-    - 3.9
+    - 3.6
     - 4.2
+    - 4.9
+  - ItemID: Fish
+    SpawnSecondinGame: 7
+    SliceSecondsInGame:
+    - 7.7
+    - 8.5
+    - 9.3
+  - ItemID: Fish
+    SpawnSecondinGame: 13
+    SliceSecondsInGame:
+    - 13.9
+    - 14.3
+    - 15
+  - ItemID: Fish
+    SpawnSecondinGame: 18
+    SliceSecondsInGame:
+    - 18.5
+    - 19.5
+    - 20.2
