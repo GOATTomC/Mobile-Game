@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7724c58349684b4da4f992e37724aa7, type: 3}
+  m_Name: TestLevel
+  m_EditorClassIdentifier: 
+  LevelItems:
+  - ItemID: Fish
+    SpawnSecondinGame: 3
+    SliceSecondsInGame:
+    - 3.6
+    - 4.2
+    - 4.9
+  - ItemID: Fish
+    SpawnSecondinGame: 7
+    SliceSecondsInGame:
+    - 7.7
+    - 8.5
+    - 9.3
+  - ItemID: Fish
+    SpawnSecondinGame: 13
+    SliceSecondsInGame:
+    - 13.9
+    - 14.3
+    - 15
+  - ItemID: Fish
+    SpawnSecondinGame: 18
+    SliceSecondsInGame:
+    - 18.5
+    - 19.5
+    - 20.2
