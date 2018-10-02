@@ -68,4 +68,14 @@ public class CanvasManager : MonoBehaviour {
 
         }
     }
+
+    public void GoToFacebook()
+    {
+        ApplicationControl.Instance.LogInToFacebook();
+    }
+
+    public void GetOffFacebook()
+    {
+        ApplicationControl.Instance.LogOutOfFacebook();
+    }
 }
