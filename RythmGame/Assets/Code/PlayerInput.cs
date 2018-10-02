@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour
 
     public void CheckMissed()
     {
-        if((clickTimes[currentClick] / reader.mapSpeed) + missAfterTime <= Time.timeSinceLevelLoad)
+        if ((clickTimes[currentClick]) + missAfterTime <= Time.timeSinceLevelLoad)
         {
             currentClick++;
             score.ScorePoints(0, "Miss");
@@ -48,19 +48,19 @@ public class PlayerInput : MonoBehaviour
 
     public void CheckClick()
     {
-        if ((clickTimes[currentClick] / reader.mapSpeed) - perfectScoreDif <= Time.timeSinceLevelLoad)
+        if ((clickTimes[currentClick]) - perfectScoreDif <= Time.timeSinceLevelLoad)
         {
             score.ScorePoints(500, "Perfect");
             SliceIndicatorCuts.Instance.Cut();
             currentClick++;
         }
-        else if ((clickTimes[currentClick] / reader.mapSpeed) - OkayScoreDif <= Time.timeSinceLevelLoad)
+        else if ((clickTimes[currentClick]) - OkayScoreDif <= Time.timeSinceLevelLoad)
         {
             score.ScorePoints(250, "Okay");
             SliceIndicatorCuts.Instance.Cut();
             currentClick++;
         }
-        else if ((clickTimes[currentClick] / reader.mapSpeed ) - 0.5f >= Time.timeSinceLevelLoad)
+        else if ((clickTimes[currentClick]) - 0.5f >= Time.timeSinceLevelLoad)
         {
             return;
         }

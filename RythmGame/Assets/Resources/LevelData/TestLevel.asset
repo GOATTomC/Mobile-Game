@@ -18,19 +18,13 @@ MonoBehaviour:
     - 3.6
     - 4.2
     - 4.9
-  - ItemID: Fish
-    SpawnSecondinGame: 7
-    SliceSecondsInGame:
-    - 7.7
-    - 8.5
-    - 9.3
-  - ItemID: Fish
+  - ItemID: Deeg
     SpawnSecondinGame: 13
     SliceSecondsInGame:
     - 13.9
     - 14.3
     - 15
-  - ItemID: Fish
+  - ItemID: Komkomer
     SpawnSecondinGame: 18
     SliceSecondsInGame:
     - 18.5

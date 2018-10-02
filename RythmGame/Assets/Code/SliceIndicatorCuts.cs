@@ -33,7 +33,7 @@ public class SliceIndicatorCuts : MonoBehaviour
 
     public void Cut()
     {
-        GameObject g = Instantiate(currentObj, Vector3.zero, Quaternion.identity);
+        GameObject g = Instantiate(fishCut, Vector3.zero, Quaternion.identity);
         g.transform.SetParent(systemParent);
     }
 }
