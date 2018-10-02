@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour {
 
@@ -65,7 +66,7 @@ public class CanvasManager : MonoBehaviour {
         //Load level select app has been used before
         else
         {
-
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -77,5 +78,11 @@ public class CanvasManager : MonoBehaviour {
     public void GetOffFacebook()
     {
         ApplicationControl.Instance.LogOutOfFacebook();
+    }
+
+    public void BackToPlay()
+    {
+        SwitchToCanvas(0);
+        PlayerPrefs.SetInt("HasPlayed", 1);
     }
 }

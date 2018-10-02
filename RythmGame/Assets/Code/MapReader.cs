@@ -14,6 +14,7 @@ public class MapReader : MonoBehaviour
     [SerializeField] private GameObject fish;
     [SerializeField] private GameObject deeg;
     [SerializeField] private GameObject komkomer;
+    [SerializeField] private GameObject prij;
 
     Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
 
@@ -23,12 +24,14 @@ public class MapReader : MonoBehaviour
 
     public Text text;
     public Text scoreText;
+    public float timeOffset;
 
     private void Awake()
     {
         objects.Add("Fish", fish);
         objects.Add("Deeg", deeg);
         objects.Add("Komkomer", komkomer);
+        objects.Add("Prij", prij);
     }
 
     private void Start()
@@ -36,12 +39,12 @@ public class MapReader : MonoBehaviour
         for (int i = 0; i < mapdata.LevelItems.Count; i++)
         {
 
-            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame), Quaternion.identity);
+            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame - timeOffset), Quaternion.identity);
             g.transform.SetParent(this.transform);
 
             for (int j = 0; j < mapdata.LevelItems[i].SliceSecondsInGame.Count; j++)
             {
-                GameObject SliceObj = Instantiate(sliceObj, Spawn(mapdata.LevelItems[i].SliceSecondsInGame[j]), transform.rotation);
+                GameObject SliceObj = Instantiate(sliceObj, Spawn(mapdata.LevelItems[i].SliceSecondsInGame[j] - timeOffset), transform.rotation);
                 input.clickTimes.Add(mapdata.LevelItems[i].SliceSecondsInGame[j] * Time.timeScale);
                 SliceObj.transform.SetParent(this.transform);
             }
