@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class MapReader : MonoBehaviour
 {
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource debugMusic;
+    [SerializeField] private bool debug;
     [SerializeField] private PlayerInput input;
     [SerializeField] private GameObject sliceObj;
 
@@ -16,6 +19,7 @@ public class MapReader : MonoBehaviour
 
     [SerializeField] private LevelData mapdata;
     public float mapSpeed;
+    public float spawnDelayMultiplier;
 
     public Text text;
     public Text scoreText;
@@ -42,12 +46,17 @@ public class MapReader : MonoBehaviour
                 SliceObj.transform.SetParent(this.transform);
             }
         }
+
+        if (!debug)
+            music.Play();
+        else
+            debugMusic.Play();
     }
 
     private void Update()
     {
         float x = transform.position.x;
-        x += Time.deltaTime * mapSpeed;
+        x += Time.deltaTime * spawnDelayMultiplier;
         transform.position = new Vector3(x, 0, 0);
         text.text = Time.timeSinceLevelLoad.ToString();
     }
@@ -56,13 +65,8 @@ public class MapReader : MonoBehaviour
     {
         Vector3 returnVec = Vector3.zero;
         returnVec.x = -(float)(spawnTime);
-        return returnVec;
-    }
-
-    public Vector3 Spawn(double spawnTime, float multiplier)
-    {
-        Vector3 returnVec = Vector3.zero;
-        returnVec.x = -(float)(spawnTime / multiplier);
+        returnVec.x *= spawnDelayMultiplier;
+        returnVec.y -= 3f;
         return returnVec;
     }
 }

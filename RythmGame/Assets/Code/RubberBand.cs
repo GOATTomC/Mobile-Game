@@ -12,7 +12,6 @@ public class RubberBand : MonoBehaviour
 
     bool rolband1Teleport = true;
 
-
     private void Update()
     {
         if(rolband1.transform.position.x > mapLimit || rolband2.transform.position.x > mapLimit)
@@ -20,15 +19,15 @@ public class RubberBand : MonoBehaviour
             print("limit");
             if (rolband1Teleport == true)
             {
-                rolband1.transform.position = new Vector3(rolband1.transform.position.x - (26.06f * 2), 0.4637145f, 0.00878546f);
+                rolband1.transform.position = new Vector3(rolband1.transform.position.x - (11.0494f * 2), -1.52f, 0);
                 rolband1Teleport = false;
-                print("band1");
+                return;
             }
             else
             {
-                rolband2.transform.position = new Vector3(rolband2.transform.position.x - (26.06f * 2), 0.4637145f, 0.00878546f);
+                rolband2.transform.position = new Vector3(rolband2.transform.position.x - (11.0494f * 2), -1.52f, 0);
                 rolband1Teleport = true;
-                print("band2");
+                return;
             }
         }
 
