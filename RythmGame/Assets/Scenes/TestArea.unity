@@ -220,7 +220,7 @@ MonoBehaviour:
   score: {fileID: 884428738}
   reader: {fileID: 884428735}
   perfectScoreDif: 0.075
-  OkayScoreDif: 0.15
+  OkayScoreDif: 0.125
   audio: {fileID: 552682702}
 --- !u!4 &552682701
 Transform:
@@ -520,6 +520,7 @@ MonoBehaviour:
   deeg: {fileID: 1177565916849226, guid: 7e86538ce8dea6343b61f40540948182, type: 2}
   komkomer: {fileID: 1900645109349204, guid: c28f3a7c0f504674490065e97f4b3c1a, type: 2}
   prij: {fileID: 1732010657973978, guid: 47704e521d327614a80e023c0241ebb9, type: 2}
+  longkomer: {fileID: 1369211943412764, guid: c4f2cfa3abf4ede4fb277344379a5242, type: 2}
   mapdata: {fileID: 11400000, guid: b012aafef29a273439e8089beee1d95c, type: 2}
   mapSpeed: 3.75
   spawnDelayMultiplier: 3.75
@@ -565,11 +566,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df769f0f5a77136429a82bf26eaee905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseScoreText: 'Score:'
+  baseScoreText: 
   totalScoreText: {fileID: 885560302}
   canvas: {fileID: 1089217667}
   newScorePrefab: {fileID: 1157418799025550, guid: 4c2f34e9e80f9b145a386943056b950a,
     type: 2}
+  scoreSprites:
+  - {fileID: 21300000, guid: 6e9189c8c50e3f3478fbd8bd3b580fb2, type: 3}
+  - {fileID: 21300000, guid: 66641fb508d84e240b054970a83a2cd5, type: 3}
+  - {fileID: 21300000, guid: 3cdfb576b6fd32e4983251c028307438, type: 3}
+  - {fileID: 21300000, guid: 3d5fbcb0f9dc6884599a48a07b258427, type: 3}
   startComboBoost1: 10
   startComboBoost2: 25
   startComboBoost3: 50
@@ -796,7 +802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 237.5}
+  m_AnchoredPosition: {x: -215, y: 628}
   m_SizeDelta: {x: 2406.84, y: 974.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885560302
@@ -819,13 +825,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 14f1ab13fa0a1c74ebb74829d9784659, type: 3}
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -886,7 +892,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1187,8 +1193,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dd877ca5d091016498051b6c116d20ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1205,8 +1211,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1376569411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 28.258125, z: 1}
+  m_LocalPosition: {x: 0, y: -1.571, z: 0}
+  m_LocalScale: {x: 1, y: 1.021, z: 1}
   m_Children: []
   m_Father: {fileID: 1260079688}
   m_RootOrder: 0
@@ -1260,9 +1266,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1.17, y: 6.67}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1349,7 +1355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1945537979
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1365,7 +1371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -84, y: 555}
+  m_AnchoredPosition: {x: 0, y: 652}
   m_SizeDelta: {x: 327, y: 121.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945537980
@@ -1394,7 +1400,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 45
-    m_Alignment: 2
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

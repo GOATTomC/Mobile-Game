@@ -12,6 +12,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject newScorePrefab;
 
+    [SerializeField] List<Sprite> scoreSprites = new List<Sprite>();
+    Sprite spriteToSpawn;
+
     private int ComboCounter;
 
     [SerializeField] private int startComboBoost1;
@@ -22,7 +25,7 @@ public class ScoreManager : MonoBehaviour
     private float comboBoost2 = 2f;
     private float comboBoost3 = 2.5f;
 
-    private float currentBoost;
+    private float currentBoost = 1;
 
 
     void Start ()
@@ -41,21 +44,25 @@ public class ScoreManager : MonoBehaviour
                 currentBoost = comboBoost2;
             if (ComboCounter > startComboBoost3)
                 currentBoost = comboBoost3;
+
+            if (text == "Perfect")
+                spriteToSpawn = scoreSprites[0];
+            else
+                spriteToSpawn = scoreSprites[1];
         }
         else
         {
             ComboCounter = 0;
             currentBoost = 1f;
+            if (text == "Bad")
+                spriteToSpawn = scoreSprites[2];
+            else
+                spriteToSpawn = scoreSprites[3];
         }
 
-        Text t = Instantiate(newScorePrefab, Vector3.up, Quaternion.identity).GetComponent<Text>();
-        t.transform.SetParent(canvas.transform,false);
-        t.rectTransform.anchoredPosition = new Vector2(0 , 380);
-        t.rectTransform.position += new Vector3(0, 200,0);
-        string scoreText = text + " +" + value.ToString();
-        if (currentBoost != 1)
-            scoreText += " X" + currentBoost.ToString();
-        t.text = scoreText;
+        SpriteRenderer renderer = Instantiate(newScorePrefab, Vector3.up, Quaternion.identity).GetComponent<SpriteRenderer>();
+        renderer.transform.position = new Vector3(0, 5.55f);
+        renderer.sprite = spriteToSpawn;
 
         totalScore += value * currentBoost;
         totalScoreText.text = baseScoreText + " " + totalScore.ToString();

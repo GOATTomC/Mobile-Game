@@ -18,8 +18,6 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
-        perfectScoreDif = perfectScoreDif / reader.mapSpeed;
-        OkayScoreDif = OkayScoreDif / reader.mapSpeed;
         missAfterTime = missAfterTime / reader.mapSpeed;
     }
 

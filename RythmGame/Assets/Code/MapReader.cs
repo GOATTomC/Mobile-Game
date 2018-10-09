@@ -15,6 +15,7 @@ public class MapReader : MonoBehaviour
     [SerializeField] private GameObject deeg;
     [SerializeField] private GameObject komkomer;
     [SerializeField] private GameObject prij;
+    [SerializeField] private GameObject longkomer;
 
     Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
 
@@ -32,6 +33,7 @@ public class MapReader : MonoBehaviour
         objects.Add("Deeg", deeg);
         objects.Add("Komkomer", komkomer);
         objects.Add("Prij", prij);
+        objects.Add("Longkomer", longkomer);
     }
 
     private void Start()
@@ -39,12 +41,12 @@ public class MapReader : MonoBehaviour
         for (int i = 0; i < mapdata.LevelItems.Count; i++)
         {
 
-            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame - timeOffset), Quaternion.identity);
+            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame - timeOffset, 3f), Quaternion.identity);
             g.transform.SetParent(this.transform);
 
             for (int j = 0; j < mapdata.LevelItems[i].SliceSecondsInGame.Count; j++)
             {
-                GameObject SliceObj = Instantiate(sliceObj, Spawn(mapdata.LevelItems[i].SliceSecondsInGame[j] - timeOffset), transform.rotation);
+                GameObject SliceObj = Instantiate(sliceObj, Spawn(mapdata.LevelItems[i].SliceSecondsInGame[j] - timeOffset, 1.5f), transform.rotation);
                 input.clickTimes.Add(mapdata.LevelItems[i].SliceSecondsInGame[j] * Time.timeScale);
                 SliceObj.transform.SetParent(this.transform);
             }
@@ -64,12 +66,12 @@ public class MapReader : MonoBehaviour
         text.text = Time.timeSinceLevelLoad.ToString();
     }
 
-    public Vector3 Spawn(double spawnTime)
+    public Vector3 Spawn(double spawnTime, float yOffset)
     {
         Vector3 returnVec = Vector3.zero;
         returnVec.x = -(float)(spawnTime);
         returnVec.x *= spawnDelayMultiplier;
-        returnVec.y -= 3f;
+        returnVec.y -= yOffset;
         return returnVec;
     }
 }
