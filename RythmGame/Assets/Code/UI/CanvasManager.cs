@@ -58,16 +58,7 @@ public class CanvasManager : MonoBehaviour {
     //Use different function because we want to check use first
     public void GoToLevelSelect()
     {
-        //If first time using app ask if want to use Facebook
-        if (ApplicationControl.Instance.IsFirstTimeUse())
-        {
-            SwitchToCanvas(2);
-        }
-        //Load level select app has been used before
-        else
-        {
-            SceneManager.LoadScene(1);
-        }
+        SceneManager.LoadScene(1);
     }
 
     public void GoToFacebook()

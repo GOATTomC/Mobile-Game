@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Facebook.Unity;
+using UnityEngine.SocialPlatforms;
+using GooglePlayGames;
 
 public class ApplicationControl : MonoBehaviour {
 
     public static ApplicationControl Instance;
 
     private bool m_InitializedFacebook = false;
+    private bool m_IsConnectedToGoogle = false;
 
     private void Awake()
     {
@@ -15,7 +17,9 @@ public class ApplicationControl : MonoBehaviour {
         if (Instance == null)
         {
             Instance = this;
-            InitializeFacebook();
+            //InitializeFacebook();
+            SetupGoogle();
+            
         }
         else
         {
@@ -27,7 +31,7 @@ public class ApplicationControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        ConnectToGoogle();
 	}
 	
 	// Update is called once per frame
@@ -66,23 +70,36 @@ public class ApplicationControl : MonoBehaviour {
         LogOutFacebook();
     }
 
+    private void SetupGoogle()
+    {
+        PlayGamesPlatform.Activate();
+    }
+
+    private bool ConnectToGoogle()
+    {
+        if (!m_IsConnectedToGoogle)
+            Social.localUser.Authenticate((bool succes) => { m_IsConnectedToGoogle = succes; });
+
+        return m_IsConnectedToGoogle;
+    }
+
     private void InitializeFacebook()
     {
-        if (m_InitializedFacebook == false)
-        {
-            FB.Init(this.OnInitFinish, this.OnLoseApplicationFocus);
-            m_InitializedFacebook = true;
-        }
+        //if (m_InitializedFacebook == false)
+        //{
+        //    FB.Init(this.OnInitFinish, this.OnLoseApplicationFocus);
+        //    m_InitializedFacebook = true;
+        //}
     }
 
     private void LogInFacebook()
     {
-        FB.LogInWithReadPermissions(new List<string>() { "public_profile" }, this.HandleResults);
+        //FB.LogInWithReadPermissions(new List<string>() { "public_profile" }, this.HandleResults);
     }
 
     private void LogOutFacebook()
     {
-        FB.LogOut();
+        //FB.LogOut();
     }
 
     private void OnInitFinish()
@@ -96,16 +113,16 @@ public class ApplicationControl : MonoBehaviour {
         //the login screen.
     }
 
-    private void HandleResults(IResult Result)
-    {
-        //Add Logic to handle responses example: What to do when login fails?
+    //private void HandleResults(IResult Result)
+    //{
+    //    //Add Logic to handle responses example: What to do when login fails?
 
-        //The event succeeded
-        if (!string.IsNullOrEmpty(Result.RawResult))
-        {
-            Debug.Log("Login Succes");
-        }
-    }
+    //    //The event succeeded
+    //    if (!string.IsNullOrEmpty(Result.RawResult))
+    //    {
+    //        Debug.Log("Login Succes");
+    //    }
+    //}
 
 
 }
