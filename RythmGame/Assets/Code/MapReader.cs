@@ -60,6 +60,9 @@ public class MapReader : MonoBehaviour
 
     private void Update()
     {
+        if (!music.isPlaying)
+            return;
+
         float x = transform.position.x;
         x += Time.deltaTime * spawnDelayMultiplier;
         transform.position = new Vector3(x, 0, 0);

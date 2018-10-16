@@ -284,3 +284,7 @@ MonoBehaviour:
     - 57.75
     - 57.87
     - 58
+  - ItemID: Deeg
+    SpawnSecondinGame: 58.5
+    SliceSecondsInGame:
+    - 58.75
