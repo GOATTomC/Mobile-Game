@@ -25,6 +25,7 @@ public class ServerControl : MonoBehaviour {
     private IEnumerator Upload(string Username, int Score, int Level)
     {
         WWWForm form = new WWWForm();
+        form.AddField("Action", "UploadScore");
         form.AddField("Username", Username);
         form.AddField("Score", Score);
         form.AddField("Level", Level);
