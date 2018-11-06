@@ -8,6 +8,7 @@ public class EndMenu : MonoBehaviour
     int nummer;
     public int levelIndex;
     public List<TMP_InputField> obj = new List<TMP_InputField>();
+    public ServerControl server;
 
     public void AddLetter(string letter)
     {
@@ -36,7 +37,7 @@ public class EndMenu : MonoBehaviour
         }
 
         float score = ScoreManager.instance.totalScore;
-        //Send(name, score, levelIndex); TODO for tom
+        server.UploadScore(name, (int)score, levelIndex);
     }
 
     public void Cancel()
