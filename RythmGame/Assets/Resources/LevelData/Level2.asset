@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7724c58349684b4da4f992e37724aa7, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  LevelItems:
+  - ItemID: Deeg
+    SpawnSecondinGame: 1.75
+    SliceSecondsInGame:
+    - 2
+  - ItemID: Deeg
+    SpawnSecondinGame: 2.25
+    SliceSecondsInGame:
+    - 2.5
+  - ItemID: Fish
+    SpawnSecondinGame: 2.75
+    SliceSecondsInGame:
+    - 3
+    - 3.25
+    - 3.5
+    - 4
+    - 4.25
+    - 4.5
+  - ItemID: Fish
+    SpawnSecondinGame: 3.75
+    SliceSecondsInGame:
+    - 4
+    - 4.25
+    - 4.5
+    - 5
+    - 5.25
+    - 5.5

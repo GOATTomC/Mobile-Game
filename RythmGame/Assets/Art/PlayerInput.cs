@@ -15,9 +15,11 @@ public class PlayerInput : MonoBehaviour
     private float missAfterTime = 0.1f;
 
     [SerializeField] private AudioSource audio;
+    public float timeBeforeDone = 65f;
 
     public bool started;
     public float timeSinceStart;
+    public GameObject prefabGameDone;
 
     private void Start()
     {
@@ -31,8 +33,11 @@ public class PlayerInput : MonoBehaviour
         
         timeSinceStart += Time.deltaTime;
 
-        if (timeSinceStart >= 65f)
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        if (timeSinceStart >= timeBeforeDone)
+        {
+            prefabGameDone.SetActive(true);
+        }
+
         if (clickTimes.Count == currentClick)
             return;
 

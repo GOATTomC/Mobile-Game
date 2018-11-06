@@ -57,6 +57,15 @@ public class MapReader : MonoBehaviour
         {
             PositionNext();
         }
+
+        for (int i = 0; i < mapdata.LevelItems.Count; i++)
+        {
+            startPos = transform.position;
+
+            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame, 3f), Quaternion.identity);
+            g.transform.SetParent(this.transform);
+        }
+
     }
 
     public void GameStart()

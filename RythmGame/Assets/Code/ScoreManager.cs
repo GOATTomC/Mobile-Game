@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
  {
-    private float totalScore;
+    public float totalScore;
 
     [SerializeField] private string baseScoreText;
     [SerializeField] private Text totalScoreText;
@@ -26,7 +26,13 @@ public class ScoreManager : MonoBehaviour
     private float comboBoost3 = 2.5f;
 
     private float currentBoost = 1;
+    public static ScoreManager instance;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     void Start ()
     {
