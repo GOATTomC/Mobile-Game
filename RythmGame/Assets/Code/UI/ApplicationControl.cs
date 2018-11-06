@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Facebook.Unity;
 
 public class ApplicationControl : MonoBehaviour {
 
@@ -15,7 +14,6 @@ public class ApplicationControl : MonoBehaviour {
         if (Instance == null)
         {
             Instance = this;
-            InitializeFacebook();
         }
         else
         {
@@ -42,6 +40,7 @@ public class ApplicationControl : MonoBehaviour {
 
     public bool IsFirstTimeUse()
     {
+        return false;
         //Return true if the app is being used for the first time
         if (PlayerPrefs.GetInt("HasPlayed") == 0)
         {
@@ -55,57 +54,57 @@ public class ApplicationControl : MonoBehaviour {
         }
     }
 
-    //We have a extra function layer to add behaviour
-    public void LogInToFacebook()
-    {
-        LogInFacebook();
-    }
+    ////We have a extra function layer to add behaviour
+    //public void LogInToFacebook()
+    //{
+    //    LogInFacebook();
+    //}
 
-    public void LogOutOfFacebook()
-    {
-        LogOutFacebook();
-    }
+    //public void LogOutOfFacebook()
+    //{
+    //    LogOutFacebook();
+    //}
 
-    private void InitializeFacebook()
-    {
-        if (m_InitializedFacebook == false)
-        {
-            FB.Init(this.OnInitFinish, this.OnLoseApplicationFocus);
-            m_InitializedFacebook = true;
-        }
-    }
+    //private void InitializeFacebook()
+    //{
+    //    if (m_InitializedFacebook == false)
+    //    {
+    //        FB.Init(this.OnInitFinish, this.OnLoseApplicationFocus);
+    //        m_InitializedFacebook = true;
+    //    }
+    //}
 
-    private void LogInFacebook()
-    {
-        FB.LogInWithReadPermissions(new List<string>() { "public_profile" }, this.HandleResults);
-    }
+    //private void LogInFacebook()
+    //{
+    //    FB.LogInWithReadPermissions(new List<string>() { "public_profile" }, this.HandleResults);
+    //}
 
-    private void LogOutFacebook()
-    {
-        FB.LogOut();
-    }
+    //private void LogOutFacebook()
+    //{
+    //    FB.LogOut();
+    //}
 
-    private void OnInitFinish()
-    {
-        //Add logic to run when Facebook initialization finished
-    }
+    //private void OnInitFinish()
+    //{
+    //    //Add logic to run when Facebook initialization finished
+    //}
 
-    private void OnLoseApplicationFocus(bool IsGameShown)
-    {
-        //Add logic here to run when facebook displays own content in front of our application by excample
-        //the login screen.
-    }
+    //private void OnLoseApplicationFocus(bool IsGameShown)
+    //{
+    //    //Add logic here to run when facebook displays own content in front of our application by excample
+    //    //the login screen.
+    //}
 
-    private void HandleResults(IResult Result)
-    {
-        //Add Logic to handle responses example: What to do when login fails?
+    //private void HandleResults(IResult Result)
+    //{
+    //    //Add Logic to handle responses example: What to do when login fails?
 
-        //The event succeeded
-        if (!string.IsNullOrEmpty(Result.RawResult))
-        {
-            Debug.Log("Login Succes");
-        }
-    }
+    //    //The event succeeded
+    //    if (!string.IsNullOrEmpty(Result.RawResult))
+    //    {
+    //        Debug.Log("Login Succes");
+    //    }
+    //}
 
 
 }

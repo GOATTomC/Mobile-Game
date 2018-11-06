@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class MapReader : MonoBehaviour
     [SerializeField] private AudioSource debugMusic;
     [SerializeField] private bool debug;
     [SerializeField] private PlayerInput input;
+
     [SerializeField] private GameObject sliceObj;
 
     [SerializeField] private GameObject fish;
@@ -27,6 +29,17 @@ public class MapReader : MonoBehaviour
     public Text scoreText;
     public float timeOffset;
 
+    int objSpawnCount;
+    public List<GameObject> sliceObjs = new List<GameObject>();
+    public List<Vector3> positions = new List<Vector3>();
+    public RubberBand band;
+    public PlayerInput player;
+    int counter;
+
+    Vector3 startPos;
+    float difference;
+    bool started;
+
     private void Awake()
     {
         objects.Add("Fish", fish);
@@ -38,29 +51,33 @@ public class MapReader : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < mapdata.LevelItems.Count; i++)
+        startPos = transform.position;
+
+        for (int i = 0; i < 20; i++)
         {
-
-            GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame - timeOffset, 3f), Quaternion.identity);
-            g.transform.SetParent(this.transform);
-
-            for (int j = 0; j < mapdata.LevelItems[i].SliceSecondsInGame.Count; j++)
-            {
-                GameObject SliceObj = Instantiate(sliceObj, Spawn(mapdata.LevelItems[i].SliceSecondsInGame[j] - timeOffset, 1.5f), transform.rotation);
-                input.clickTimes.Add(mapdata.LevelItems[i].SliceSecondsInGame[j] * Time.timeScale);
-                SliceObj.transform.SetParent(this.transform);
-            }
+            PositionNext();
         }
+    }
 
+    public void GameStart()
+    {
         if (!debug)
             music.Play();
         else
             debugMusic.Play();
-    }
 
+        started = true;
+        band.started = true;
+        player.started = true;
+    }
     private void Update()
     {
-        if (!music.isPlaying)
+        if (Input.GetMouseButtonDown(0) && !started)
+            GameStart();
+
+        difference = startPos.x - transform.position.x;
+
+        if (!music.isPlaying || started == false)
             return;
 
         float x = transform.position.x;
@@ -76,6 +93,20 @@ public class MapReader : MonoBehaviour
         returnVec.x *= spawnDelayMultiplier;
         returnVec.y -= yOffset;
         return returnVec;
+    }
+
+    public void PositionNext()
+    {
+        if (counter >= input.clickTimes.Count)
+            return;
+        Vector3 pos = positions[counter];
+        pos.x -= difference;
+        sliceObjs[objSpawnCount].transform.position = pos;
+        if(counter < input.clickTimes.Count)
+            counter++;
+        objSpawnCount++;
+        if (objSpawnCount >= 20)
+            objSpawnCount = 0;
     }
 }
 

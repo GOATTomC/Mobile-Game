@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField] private AudioSource audio;
 
+    public bool started;
+    public float timeSinceStart;
+
     private void Start()
     {
         missAfterTime = missAfterTime / reader.mapSpeed;
@@ -23,6 +26,13 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (!started)
+            return;
+        
+        timeSinceStart += Time.deltaTime;
+
+        if (timeSinceStart >= 65f)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         if (clickTimes.Count == currentClick)
             return;
 
@@ -33,11 +43,12 @@ public class PlayerInput : MonoBehaviour
             CheckClick();
             audio.Play();
         }
+
     }
 
     public void CheckMissed()
     {
-        if ((clickTimes[currentClick]) + missAfterTime <= Time.timeSinceLevelLoad)
+        if ((clickTimes[currentClick]) + missAfterTime <= timeSinceStart)
         {
             currentClick++;
             score.ScorePoints(0, "Miss");
@@ -46,19 +57,19 @@ public class PlayerInput : MonoBehaviour
 
     public void CheckClick()
     {
-        if ((clickTimes[currentClick]) - perfectScoreDif <= Time.timeSinceLevelLoad)
+        if ((clickTimes[currentClick]) - perfectScoreDif <= timeSinceStart)
         {
             score.ScorePoints(500, "Perfect");
             SliceIndicatorCuts.Instance.Cut();
             currentClick++;
         }
-        else if ((clickTimes[currentClick]) - OkayScoreDif <= Time.timeSinceLevelLoad)
+        else if ((clickTimes[currentClick]) - OkayScoreDif <= timeSinceStart)
         {
             score.ScorePoints(250, "Okay");
             SliceIndicatorCuts.Instance.Cut();
             currentClick++;
         }
-        else if ((clickTimes[currentClick]) - 0.5f >= Time.timeSinceLevelLoad)
+        else if ((clickTimes[currentClick]) - 0.5f >= timeSinceStart)
         {
             return;
         }
