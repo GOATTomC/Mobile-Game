@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
 public class ServerControl : MonoBehaviour {
@@ -32,5 +33,6 @@ public class ServerControl : MonoBehaviour {
 
         WWW www = new WWW("http://slicebeatkitchen.000webhostapp.com/", form);
         yield return www;
+ 
     }
 }

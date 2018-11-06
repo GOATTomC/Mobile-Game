@@ -210,6 +210,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114341752052278982, guid: f9e03d1b539d16940b702b925b74a77c,
+        type: 2}
+      propertyPath: server
+      value: 
+      objectReference: {fileID: 618714706}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e03d1b539d16940b702b925b74a77c, type: 2}
   m_IsPrefabAsset: 0
