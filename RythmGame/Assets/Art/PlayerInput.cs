@@ -30,7 +30,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (!started)
             return;
-        
+        print(timeSinceStart);
         timeSinceStart += Time.deltaTime;
 
         if (timeSinceStart >= timeBeforeDone)

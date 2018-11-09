@@ -64,6 +64,7 @@ public class MapReader : MonoBehaviour
 
             GameObject g = Instantiate(objects[mapdata.LevelItems[i].ItemID], Spawn(mapdata.LevelItems[i].SpawnSecondinGame, 3f), Quaternion.identity);
             g.transform.SetParent(this.transform);
+
         }
 
     }
@@ -86,7 +87,7 @@ public class MapReader : MonoBehaviour
 
         difference = startPos.x - transform.position.x;
 
-        if (!music.isPlaying || started == false)
+        if (started == false)   
             return;
 
         float x = transform.position.x;
