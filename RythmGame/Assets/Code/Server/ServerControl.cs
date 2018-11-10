@@ -31,7 +31,7 @@ public class ServerControl : MonoBehaviour {
         form.AddField("Score", Score);
         form.AddField("Level", Level);
 
-        WWW www = new WWW("http://slicebeatkitchen.000webhostapp.com/", form);
+        WWW www = new WWW("http://tom-host.site/SliceBeat/index.php", form);
         yield return www;
  
     }
