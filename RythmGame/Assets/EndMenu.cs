@@ -38,6 +38,7 @@ public class EndMenu : MonoBehaviour
 
         float score = ScoreManager.instance.totalScore;
         server.UploadScore(name, (int)score, levelIndex);
+        Cancel();
     }
 
     public void Cancel()

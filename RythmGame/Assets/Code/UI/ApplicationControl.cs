@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ApplicationControl : MonoBehaviour {
 
     public static ApplicationControl Instance;
 
     private bool m_InitializedFacebook = false;
+
+    [SerializeField] private TMPro.TextMeshProUGUI m_AudioText;
 
     private void Awake()
     {
@@ -51,6 +54,20 @@ public class ApplicationControl : MonoBehaviour {
         else
         {
             return false;
+        }
+    }
+
+    public void SetSound()
+    {
+        if (AudioListener.volume == 1)
+        {
+            AudioListener.volume = 0;
+            m_AudioText.SetText("Volume on");
+        }
+        else
+        {
+            AudioListener.volume = 1;
+            m_AudioText.SetText("Volume off");
         }
     }
 

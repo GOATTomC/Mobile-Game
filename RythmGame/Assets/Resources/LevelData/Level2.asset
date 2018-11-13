@@ -82,7 +82,7 @@ MonoBehaviour:
   - ItemID: Deeg
     SpawnSecondinGame: 18.25
     SliceSecondsInGame:
-    - 18.75
+    - 18.5
   - ItemID: Komkomer
     SpawnSecondinGame: 18.75
     SliceSecondsInGame:
